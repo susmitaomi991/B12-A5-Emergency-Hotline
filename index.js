@@ -32,6 +32,41 @@ copyBtnDiv.addEventListener("click", () => {
 
 
 
+const callDiv = document.querySelector(".call-btn-div");
+  const rewardText = document.querySelector(".call-reward");
+  const historyList = document.querySelector(".history-list");
+  const clearBtn = document.querySelector(".clear-history");
+
+
+  callDiv.addEventListener("click", () => {
+    // Show alert
+    alert("Calling National Emergency Service 999...");
+
+    // Decrease reward
+    let current = Number(rewardText.innerText);
+    if (current > 0) {
+      current = current - 20;
+    }
+    rewardText.innerText = current;
+
+    // Add history item
+    const time = new Date().toLocaleTimeString();
+    const historyItem = document.createElement("p");
+    historyItem.classList.add("call");
+
+    historyItem.textContent = `Called 999 at ${time}`;
+
+    historyList.appendChild(historyItem);
+  });
+
+  // When Clear button is clicked
+  clearBtn.addEventListener("click", () => {
+    historyList.innerHTML = ""; 
+  });
+
+
+
+
   
 
 
